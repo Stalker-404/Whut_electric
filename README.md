@@ -1,0 +1,2 @@
+# Whut_electric
+Whut_electric是一个基于Python3编写的Linux爬虫程序，通过chromedriver和selenium模拟点击并爬取武汉理工大学马房山校区学生宿舍电费余额，用ServerChan进行消息推送
