@@ -90,7 +90,7 @@ python3 whut_electric.py
 可通过crontab定时任务实现每日/周/月推送消息
 
 ## 效果展示（以微信方糖服务号为例）
-<img width="300" src="images/ElectricMsg.jpg"/> <img width="300" src="images/ElectricContent.jpg"/> <img width="300" src="images/Error.jpg"/>
+<img width="200" src="images/ElectricMsg.jpg"/> <img width="200" src="images/ElectricContent.jpg"/> <img width="200" src="images/Error.jpg"/>
 
 ## 开源协议
 本项目使用[Apache License 2.0](https://github.com/Stalker-404/Whut_electric/blob/main/LICENSE)开源许可证
