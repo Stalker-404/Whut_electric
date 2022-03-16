@@ -24,14 +24,14 @@ VPS、软路由、树莓派等**安装Linux发行版本且便于24小时运行�
 | Whut_electric.ipynb  | Google Colab项目，用于在线编写、调试和提交 |
 | whut_electric.py  | py脚本文件，用于本地执行 |
 
-## 依赖环境组件
+## 调用模块和组件
 
-|  Python组件   | 说明  |
-|  ----  | ----  |
-| selenium  | 用于模拟用户点击 |
-| re  | 用于处理带小数点的字符串数值 |
-| requests  | 用于向Server酱发起推送请求 |
-| urllib.parse  | 用于进行URL特殊字符编码 |
+|  Python组件   | 说明  | 备注  |
+|  ----  | ----  | ----  |
+| selenium  | 用于模拟用户点击 | 需额外安装  |
+| re  | 用于处理带小数点的字符串数值 | Python3 标准库 |
+| requests  | 用于向Server酱发起推送请求 | 需额外安装 |
+| urllib  | 用于进行URL特殊字符编码 | Python3 标准库 |
   
 |  系统组件   | 说明  |
 |  ----  | ----  |
@@ -43,15 +43,15 @@ VPS、软路由、树莓派等**安装Linux发行版本且便于24小时运行�
 2. 在[消息通道](https://sct.ftqq.com/forward)中设置需要推送的途径，保存后进行发送测试，确认推送消息能够送达。  
 
 ### 下载执行脚本并编辑
-1. 将**whut_electric.py**下载到指定的Linux设备上，并赋予执行权限(755)
+1. 将**whut_electric.py**下载到指定的Linux设备上，并赋予执行权限(755)。
 ```
 chmod 755 whut_electric.py
 ```  
   
-2. 登陆[武汉理工大学缴费平台](http://cwsf.whut.edu.cn/)，进入**马房山学生电费**，将自己的宿舍信息（校区、楼栋、楼层和房间号）**一字不差**地复制或记录下来
+2. 登陆[武汉理工大学缴费平台](http://cwsf.whut.edu.cn/)，进入**马房山学生电费**，将自己的宿舍信息（校区、楼栋、楼层和房间号）**一字不差**地复制或记录下来。
 ![example](images/infoexample.png)  
   
-3. 编辑**whut_electric.py**，将宿舍信息和从Server酱处获得的Sendkey粘贴到**个人信息参数**的对应部分，可根据情况修改当日电价便于精确计算剩余度数
+3. 编辑**whut_electric.py**，将宿舍信息和从Server酱处获得的Sendkey粘贴到**个人信息参数**的对应部分，可根据情况修改当日电价便于精确计算剩余度数。
 ```
 """# 填入个人信息参数"""
 
@@ -72,7 +72,7 @@ price = 0.59
 # 填入通过Serverchan获取的sendkey
 key = "**********************************"
 ```  
-### 安装依赖环境
+### 安装需调用模块和组件
 
 ```
 pip3 install selenium
@@ -82,15 +82,15 @@ apt install chromium-chromedriver
 ```
 
 ## 运行说明
-直接调用编辑完成的py脚本即可
+直接调用编辑完成的py脚本即可。
 ```
 python3 whut_electric.py
 ```  
   
-可通过crontab定时任务实现每日/周/月推送消息
+可通过crontab定时任务实现每日/周/月推送消息。
 
 ## 效果展示（以微信方糖服务号为例）
 ![wxmessage](images/PushMsg.png) 
 
 ## 开源协议
-本项目使用[Apache License 2.0](https://github.com/Stalker-404/Whut_electric/blob/main/LICENSE)开源许可证
+本项目使用[Apache License 2.0](https://github.com/Stalker-404/Whut_electric/blob/main/LICENSE)开源许可证。
