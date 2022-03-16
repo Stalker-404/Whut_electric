@@ -9,13 +9,13 @@ VPS、软路由、树莓派等**安装Linux发行版本且便于24小时运行�
 
 ## 兼容性测试
 
-|  兼容性   | 系统  | 设备  |
-|  ----  | ----  |----  |
-| :white_check_mark:  | Ubuntu 18.04 | VMware虚拟机 |
-| :white_check_mark:  | Debian 11 | 树莓派RaspberryPi 4B|
-| :white_check_mark:  | Armbian 5.77 | 斐讯Phicomm N1|
-| :white_check_mark:  | Ubuntu 18.04 | 香橙派OrangePi PC 2|
-| :x:  | Windows | x64计算机|
+|  兼容性   | 系统  | 设备  | Python版本  |
+|  ----  | ----  |----  |----  |
+| :white_check_mark:  | Ubuntu 18.04 | VMware虚拟机 | 3.6.7 |
+| :white_check_mark:  | Debian 11 | 树莓派RaspberryPi 4B| 3.7.3  |
+| :white_check_mark:  | Armbian 5.77 | 斐讯Phicomm N1| 3.6.7  |
+| :white_check_mark:  | Ubuntu 18.04 | 香橙派OrangePi PC 2| 3.6.7  |
+| :x:  | Windows | x64计算机|  3.7.3 |
 
 ## 文件清单
 
