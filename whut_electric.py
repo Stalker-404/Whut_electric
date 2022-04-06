@@ -7,11 +7,11 @@ Original file is located at
     https://colab.research.google.com/drive/1-1BZ6V07jYp5B3ajEJLWYffvKVpR9BIc
 
 # 安装依赖环境
-
-!pip3 install selenium
-!apt-get update 
-!apt install chromium-chromedriver
 """
+
+#!pip3 install selenium
+#!apt-get update 
+#!apt install chromium-chromedriver
 
 """# 填入个人信息参数"""
 
@@ -49,6 +49,12 @@ driver = webdriver.Chrome(chrome_options=chrome_options)
 try:
   #连接到登陆平台
   driver.get('http://cwsf.whut.edu.cn/MNetWorkUI/slogin.html')
+
+  #忽略2022年3月25日开始出现的的弹窗信息
+  driver.implicitly_wait(20)
+  jumpalert = driver.switch_to.alert
+  jumpalert.accept() 
+
   #选择平台账号登陆
   select_logintype = Select(driver.find_element_by_id('logintype'))
   select_logintype.select_by_value('PLATFORM')
@@ -93,34 +99,43 @@ try:
   errstatus = 0
   driver.quit()
  
-except:
+except Exception as e:
   
   #结束运行
   errstatus = 1
   driver.quit()
+
+  #保存错误信息
+  errinfo = e
 
 """# 调用ServerChan进行消息推送"""
 
 import requests
 from urllib.parse import quote
 
-# 定义推送标题和内容
-content = """
-**所在校区：**{}\n
-**所在楼栋：**{}\n
-**所在楼层：**{}\n
-**房间号码：**{}
-""".format(area , building , floor , room) #信息内容
-
-content = quote(content, 'utf-8') #对信息内容进行URL转义
-
 if errstatus == 0:
   title = "{}电费剩余{}元（{}度）".format(room , str(balance) , str(power)) #标题
+  content = """
+  **所在校区：**{}\n
+  **所在楼栋：**{}\n
+  **所在楼层：**{}\n
+  **房间号码：**{}
+  """.format(area , building , floor , room) #信息内容
+
 else:
   title = "电费查询脚本出错！"
+  content = """
+  **所在校区：**{}\n
+  **所在楼栋：**{}\n
+  **所在楼层：**{}\n
+  **房间号码：**{}\n
+  **报错信息：** \n
+  {}
+  """.format(area , building , floor , room , errinfo) #信息内容
 
-# 对标题进行URL转义
-title = quote(title, 'utf-8')
+# 进行URL转义
+title = quote(title, 'utf-8') #对信息标题进行URL转义
+content = quote(content, 'utf-8') #对信息内容进行URL转义
 
 # 发送信息
 requests.get("https://sc.ftqq.com/{}.send?text={}&desp={}".format(key,title,content))
